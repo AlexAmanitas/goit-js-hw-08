@@ -8,10 +8,11 @@ console.log(galleryItems);
 const galleryRef = document.querySelector('.gallery');
 galleryRef.insertAdjacentHTML('afterbegin', greateMarcup(galleryItems));
 
-new SimpleLightbox('.gallery__item', {
+let gallery = new SimpleLightbox('.gallery__item', {
   captionsData: 'alt',
   captionDelay: 250,
 });
+console.log(gallery);
 
 function greateMarcup(items) {
   return items
