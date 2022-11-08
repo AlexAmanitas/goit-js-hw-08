@@ -51,16 +51,18 @@ const refs = {
 const data = {};
 
 const onInput = e => {
-  data[e.target.name] = e.target.value;
-  // верхній рядок можна замініти на 2 наступних, тоді буде правільніше, але в мене прийняли і так
-  // data.email = refs.email.value;
-  //   data.message = refs.message.value;
+  data.email = refs.email.value;
+  data.message = refs.message.value;
   const inputJson = JSON.stringify(data);
   localStorage.setItem(STORAGE_KEY, inputJson);
 };
 
 const onFormSubmit = e => {
   e.preventDefault();
+  if (!data.email || !data.message) {
+    alert('Fill in all the fields');
+    return;
+  }
   console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
   e.target.reset();
   delete data.message;
